@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prairie Common — Cluster 0001 Curated Prototype</title>
+<style>
+:root{--ink:#181713;--paper:#efe9de;--surface:#f8f4ec;--line:#c7bdad;--muted:#756e63;--soft:#ddd4c6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{padding:24px 4vw;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:rgba(239,233,222,.96);position:sticky;top:0;z-index:20}
+.brand{font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.cluster-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero{padding:70px 4vw 50px;max-width:1400px;margin:auto}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1,h2,h3,h4{font-family:Georgia,serif;font-weight:500}
+h1{font-size:clamp(54px,9vw,120px);line-height:.88;margin:18px 0 26px}
+.hero p{max-width:860px;font-family:Georgia,serif;font-size:24px;line-height:1.45}
+.layout{display:grid;grid-template-columns:310px 1fr;max-width:1500px;margin:auto;border-top:1px solid var(--line)}
+.timeline-nav{position:sticky;top:73px;align-self:start;padding:28px 20px 50px 4vw;max-height:calc(100vh - 73px);overflow:auto;border-right:1px solid var(--line)}
+.timeline-nav button{width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:16px 0;cursor:pointer;color:var(--ink)}
+.timeline-nav span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.timeline-nav strong{font-family:Georgia,serif;font-size:18px;font-weight:500}
+.content{padding:0 4vw 90px}
+.period{padding:64px 0 20px;border-bottom:1px solid var(--ink)}
+.period-intro{max-width:900px;margin-bottom:44px}
+.period-intro h2{font-size:46px;line-height:1.05;margin:10px 0 14px}
+.period-intro p{font-family:Georgia,serif;font-size:21px;line-height:1.5;color:#3f3b34}
+.release{background:var(--surface);border:1px solid var(--line);margin:0 0 42px;padding:30px}
+.release-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+.release h3{font-size:38px;margin:6px 0 4px}
+.artist{margin:0;color:var(--muted)}
+.badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.badge{border:1px solid var(--line);border-radius:999px;padding:6px 9px;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.badge.owned{background:#dfe8d8} .badge.transit{background:#efe1b9} .badge.missing{background:#ead3cf} .badge.scanned{background:#d9e7e9}
+.gallery-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:28px 0}
+.scan-card{min-width:0}
+.scan-placeholder{aspect-ratio:1.2;background:linear-gradient(135deg,#d7cec0,#aea495);display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-family:Georgia,serif;font-size:20px}
+.scan-card span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:7px}
+.empty-gallery{border:1px dashed var(--line);padding:28px;color:var(--muted);font-style:italic}
+.release-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;margin-top:28px}
+.release-grid h4,.research-layer h4{font-size:24px;margin:0 0 14px}
+dl{margin:24px 0 0} dl div{display:grid;grid-template-columns:150px 1fr;padding:10px 0;border-top:1px solid var(--line)} dt{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)} dd{margin:0}
+.relations{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.relation{border-top:1px solid var(--line);padding-top:12px}
+.relation h4{font-size:20px;margin:4px 0 6px}
+.relation p{font-size:13px;color:#4f4a42}
+.research-layer{margin-top:30px;padding-top:24px;border-top:1px solid var(--ink)}
+.evidence-item{border-top:1px solid var(--line);padding:10px 0}
+.evidence-item summary{cursor:pointer;font-weight:700}
+.evidence-item p{font-size:14px;color:#4d4942}
+.muted{color:var(--muted)}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.timeline-nav{position:static;display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line);padding:14px 4vw;gap:22px}.timeline-nav button{min-width:220px;border-bottom:0;border-right:1px solid var(--line);padding-right:20px}.release-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.release{padding:20px}.release-head{display:block}.badges{justify-content:flex-start;margin-top:16px}.relations{grid-template-columns:1fr}.period-intro h2{font-size:36px}}
+</style>
+</head>
+<body>
+<header><div class="brand">Prairie Common.</div><div class="cluster-label">PC-CLUSTER-0001 · Frēk Shō Network</div></header>
+<section class="hero">
+  <div class="eyebrow">Curated cluster prototype</div>
+  <h1>Frēk Shō<br>Network</h1>
+  <p>The archive is entered through historical periods. Each period contains the complete experience: preserved objects, release context, relationships, and research basis. Nothing important is hidden behind a separate information mode.</p>
+</section>
+<div class="layout">
+  <aside class="timeline-nav"><button data-target='period-early'><span>1995–1996</span><strong>Origins and first physical statements</strong></button><button data-target='period-mocean'><span>1997</span><strong>Mocean and the Vagrant Hobby era</strong></button><button data-target='period-kingpin'><span>1999–2000</span><strong>Kingpin and the full-length phase</strong></button><button data-target='period-retrospective'><span>2002</span><strong>Tournament Edition and Papercuts</strong></button><button data-target='period-connected'><span>2003–2005</span><strong>Connected and member catalogues</strong></button></aside>
+  <main class="content">
+    <section class="period" id="period-early">
+      <div class="period-intro">
+        <div class="eyebrow">1995–1996</div>
+        <h2>Origins and first physical statements</h2>
+        <p>The cluster begins with Twisted Spirits and the earliest Frēk Shō cassette-era material. This period establishes the transition from predecessor group to collective identity.</p>
+      </div>
+      
+    <article class="release" id="PC-CR-0001">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1995 · PC-CR-0001</div>
+          <h3>Wet Dreams</h3>
+          <p class="artist">Twisted Spirits</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge transit">In Transit</span>
+      <span class="badge ">Not Scanned</span>
+      <span class="badge">Cassette</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Physical cassette secured; J-card already held.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Original cassette</dd></div>
+            <div><dt>Chronology</dt><dd>1st</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / label operator</div><h4>The Gallivanting Spoof</h4><p>Joined through Twisted Spirits; Vagrant Hobby history</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Ismaila Alfa / Mocean</h4><p>Joined through Twisted Spirits; Mocean remains Frēk Shō-branded</p></article><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article><article class='relation'><div class='eyebrow'>Earlier label / imprint</div><h4>Lolo Productions</h4><p>Twisted Spirits and split-cassette period</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0001 · Wet Dreams J-card; split cassette; owned and incoming physical copies</summary>
+              <p><strong>Establishes:</strong> Existence, ownership and owner-reviewed order</p>
+              <p><strong>Limitation:</strong> Exact dates and manufacturing details require physical extraction</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0002">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1995 · PC-CR-0002</div>
+          <h3>Split cassette</h3>
+          <p class="artist">Twisted Spirits / Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">Cassette</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Owner-confirmed placement after Wet Dreams.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Split release</dd></div>
+            <div><dt>Chronology</dt><dd>2nd</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / label operator</div><h4>The Gallivanting Spoof</h4><p>Joined through Twisted Spirits; Vagrant Hobby history</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Ismaila Alfa / Mocean</h4><p>Joined through Twisted Spirits; Mocean remains Frēk Shō-branded</p></article><article class='relation'><div class='eyebrow'>Earlier label / imprint</div><h4>Lolo Productions</h4><p>Twisted Spirits and split-cassette period</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0001 · Wet Dreams J-card; split cassette; owned and incoming physical copies</summary>
+              <p><strong>Establishes:</strong> Existence, ownership and owner-reviewed order</p>
+              <p><strong>Limitation:</strong> Exact dates and manufacturing details require physical extraction</p>
+            </details>
+
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0003">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1995 · PC-CR-0003</div>
+          <h3>I&#x27;m Uncivilized</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge transit">In Transit</span>
+      <span class="badge ">Not Scanned</span>
+      <span class="badge">Cassette</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Physical cassette secured.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Original cassette</dd></div>
+            <div><dt>Chronology</dt><dd>3rd</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article><article class='relation'><div class='eyebrow'>Earlier label / imprint</div><h4>Lolo Productions</h4><p>Twisted Spirits and split-cassette period</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0001 · Wet Dreams J-card; split cassette; owned and incoming physical copies</summary>
+              <p><strong>Establishes:</strong> Existence, ownership and owner-reviewed order</p>
+              <p><strong>Limitation:</strong> Exact dates and manufacturing details require physical extraction</p>
+            </details>
+
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0004">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1996 · PC-CR-0004</div>
+          <h3>Sho &amp; Tell</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge ">Not Scanned</span>
+      <span class="badge">Cassette</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Owner confirms physical copy is held.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>EP</dd></div>
+            <div><dt>Chronology</dt><dd>4th; exact date under review</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+
+            <details class="evidence-item">
+              <summary>PC-EVID-0007 · Stylus — Winnipeg State of Mind Top 100</summary>
+              <p><strong>Establishes:</strong> Sho &amp; Tell song associations; Patience and Mocean chronology</p>
+              <p><strong>Limitation:</strong> Retrospective, not manufacturing documentation</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0005">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1996 · PC-CR-0005</div>
+          <h3>Patience / The Shadow</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">12-inch vinyl</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Record — side A</div><span>Record — side A</span></div><div class='scan-card'><div class='scan-placeholder'>Record — side B</div><span>Record — side B</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Commercial issue.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Commercial single</dd></div>
+            <div><dt>Chronology</dt><dd>5th</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0023</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Member / artist</div><h4>Gruf the Druid</h4><p>Core member; later Peanuts &amp; Corn connection</p></article><article class='relation'><div class='eyebrow'>Member / solo artist</div><h4>Micill / Shazzam the Vocal Shock Ill Kid</h4><p>Core member; later solo catalogue</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Gumball / Reefill</h4><p>Core member with later Reefill catalogue</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0007 · Stylus — Winnipeg State of Mind Top 100</summary>
+              <p><strong>Establishes:</strong> Sho &amp; Tell song associations; Patience and Mocean chronology</p>
+              <p><strong>Limitation:</strong> Retrospective, not manufacturing documentation</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0006">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1996 · PC-CR-0006</div>
+          <h3>Patience / The Shadow</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">12-inch vinyl</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Separate physical test pressing.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Variant</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Test pressing</dd></div>
+            <div><dt>Chronology</dt><dd>Same release era</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0001 · Wet Dreams J-card; split cassette; owned and incoming physical copies</summary>
+              <p><strong>Establishes:</strong> Existence, ownership and owner-reviewed order</p>
+              <p><strong>Limitation:</strong> Exact dates and manufacturing details require physical extraction</p>
+            </details>
+      </section>
+    </article>
+    
+    </section>
+    
+    <section class="period" id="period-mocean">
+      <div class="period-intro">
+        <div class="eyebrow">1997</div>
+        <h2>Mocean and the Vagrant Hobby era</h2>
+        <p>Mocean marks a distinct turn in the cluster: a solo project issued under the Frēk Shō identity, tied directly to Vagrant Hobby and the collective’s expanding internal roles.</p>
+      </div>
+      
+    <article class="release" id="PC-CR-0007">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1997 · PC-CR-0007</div>
+          <h3>Mocean</h3>
+          <p class="artist">Frēk Shō / Mocean</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Disc</div><span>Disc</span></div><div class='scan-card'><div class='scan-placeholder'>Front / back insert</div><span>Front / back insert</span></div><div class='scan-card'><div class='scan-placeholder'>Inner panel</div><span>Inner panel</span></div><div class='scan-card'><div class='scan-placeholder'>Inside packaging</div><span>Inside packaging</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>VH001; Frēk Shō-branded Mocean/Ismaila solo context.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Solo album under Frēk Shō identity</dd></div>
+            <div><dt>Chronology</dt><dd>6th</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0031</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Member / artist</div><h4>Gruf the Druid</h4><p>Core member; later Peanuts &amp; Corn connection</p></article><article class='relation'><div class='eyebrow'>Member / solo artist</div><h4>Micill / Shazzam the Vocal Shock Ill Kid</h4><p>Core member; later solo catalogue</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Ismaila Alfa / Mocean</h4><p>Joined through Twisted Spirits; Mocean remains Frēk Shō-branded</p></article><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0004 · Mocean VH001</summary>
+              <p><strong>Establishes:</strong> 1997, Vagrant Hobby VH001, Frēk Shō identity</p>
+              <p><strong>Limitation:</strong> Complete hub string still needs direct inspection</p>
+            </details>
+      </section>
+    </article>
+    
+    </section>
+    
+    <section class="period" id="period-kingpin">
+      <div class="period-intro">
+        <div class="eyebrow">1999–2000</div>
+        <h2>Kingpin and the full-length phase</h2>
+        <p>The Kingpin era moves from single and promo configurations into cassette and album formats, culminating in People in Your Neighborhood.</p>
+      </div>
+      
+    <article class="release" id="PC-CR-0008">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1999 · PC-CR-0008</div>
+          <h3>Kingpin / Elegant Mess / 6:45 AM / To Be Continued</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">12-inch vinyl</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Record — side A</div><span>Record — side A</span></div><div class='scan-card'><div class='scan-placeholder'>Record — side B</div><span>Record — side B</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Contemporary review confirms four-track configuration.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Commercial four-track single</dd></div>
+            <div><dt>Chronology</dt><dd>7th</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0029</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0005 · Exclaim! — Kingpin review, December 1999</summary>
+              <p><strong>Establishes:</strong> Four-track commercial configuration</p>
+              <p><strong>Limitation:</strong> Does not document promo/test variant</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0009">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">1999 · PC-CR-0009</div>
+          <h3>Kingpin</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">12-inch vinyl</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Distinct promo/test record.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Variant</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Promo / test record</dd></div>
+            <div><dt>Chronology</dt><dd>Same era</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0001 · Wet Dreams J-card; split cassette; owned and incoming physical copies</summary>
+              <p><strong>Establishes:</strong> Existence, ownership and owner-reviewed order</p>
+              <p><strong>Limitation:</strong> Exact dates and manufacturing details require physical extraction</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0010">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2000 · PC-CR-0010</div>
+          <h3>Kingpin</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">Cassette</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Cassette liner</div><span>Cassette liner</span></div><div class='scan-card'><div class='scan-placeholder'>Cover — inside / outside</div><span>Cover — inside / outside</span></div><div class='scan-card'><div class='scan-placeholder'>Cassette — side A</div><span>Cassette — side A</span></div><div class='scan-card'><div class='scan-placeholder'>Cassette — side B</div><span>Cassette — side B</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Program relationship unresolved.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Variant / edition</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Cassette edition</dd></div>
+            <div><dt>Chronology</dt><dd>8th working position</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0030</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article><article class='relation'><div class='eyebrow'>Associated label / scene network</div><h4>Peanuts &amp; Corn</h4><p>Connected through Gruf, Fermented Reptile and Papercuts</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0001 · Wet Dreams J-card; split cassette; owned and incoming physical copies</summary>
+              <p><strong>Establishes:</strong> Existence, ownership and owner-reviewed order</p>
+              <p><strong>Limitation:</strong> Exact dates and manufacturing details require physical extraction</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0011">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2000 · PC-CR-0011</div>
+          <h3>People in Your Neighborhood</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Disc</div><span>Disc</span></div><div class='scan-card'><div class='scan-placeholder'>Front / back package</div><span>Front / back package</span></div><div class='scan-card'><div class='scan-placeholder'>Inside packaging</div><span>Inside packaging</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Artifact controls final title styling.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Full-length album</dd></div>
+            <div><dt>Chronology</dt><dd>9th</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0033</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Gumball / Reefill</h4><p>Core member with later Reefill catalogue</p></article><article class='relation'><div class='eyebrow'>Expanded member / participant</div><h4>Legend</h4><p>Named in later sources</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0003 · CitizenFreak / Museum of Canadian Music</summary>
+              <p><strong>Establishes:</strong> Group membership and predecessor groups</p>
+              <p><strong>Limitation:</strong> User-contributed database contains title/spelling errors</p>
+            </details>
+
+            <details class="evidence-item">
+              <summary>PC-EVID-0007 · Stylus — Winnipeg State of Mind Top 100</summary>
+              <p><strong>Establishes:</strong> Sho &amp; Tell song associations; Patience and Mocean chronology</p>
+              <p><strong>Limitation:</strong> Retrospective, not manufacturing documentation</p>
+            </details>
+      </section>
+    </article>
+    
+    </section>
+    
+    <section class="period" id="period-retrospective">
+      <div class="period-intro">
+        <div class="eyebrow">2002</div>
+        <h2>Tournament Edition and Papercuts</h2>
+        <p>This period presents the collective looking outward and backward at once: retrospective framing, compilation activity, and the clearest bridge into connected Prairie catalogues.</p>
+      </div>
+      
+    <article class="release" id="PC-CR-0012">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2002 · PC-CR-0012</div>
+          <h3>Tournament Edition</h3>
+          <p class="artist">Frēk Shō</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Disc</div><span>Disc</span></div><div class='scan-card'><div class='scan-placeholder'>Front / back package</div><span>Front / back package</span></div><div class='scan-card'><div class='scan-placeholder'>Inside package</div><span>Inside package</span></div><div class='scan-card'><div class='scan-placeholder'>Booklet / insert</div><span>Booklet / insert</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Published review supplies expanded membership context.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Compilation / retrospective album</dd></div>
+            <div><dt>Chronology</dt><dd>10th</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0017</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0006 · Exclaim! — Tournament Edition review, October 2002</summary>
+              <p><strong>Establishes:</strong> Expanded membership and release context</p>
+              <p><strong>Limitation:</strong> No full manufacturing metadata</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0013">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2002 · PC-CR-0013</div>
+          <h3>Papercuts</h3>
+          <p class="artist">Various Artists / Frēk Shō Presents</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">Vinyl</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='scan-card'><div class='scan-placeholder'>Record — side A</div><span>Record — side A</span></div><div class='scan-card'><div class='scan-placeholder'>Record — side B</div><span>Record — side B</span></div><div class='scan-card'><div class='scan-placeholder'>Front sleeve reconstruction</div><span>Front sleeve reconstruction</span></div><div class='scan-card'><div class='scan-placeholder'>Back sleeve reconstruction</div><span>Back sleeve reconstruction</span></div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>DJ Kutdown provenance noted.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Core chronology / compilation</dd></div>
+            <div><dt>Variant / relationship</dt><dd>FS004 LP</dd></div>
+            <div><dt>Chronology</dt><dd>11th</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0032</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / artist</div><h4>Gruf the Druid</h4><p>Core member; later Peanuts &amp; Corn connection</p></article><article class='relation'><div class='eyebrow'>Associated label / scene network</div><h4>Peanuts &amp; Corn</h4><p>Connected through Gruf, Fermented Reptile and Papercuts</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0014">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2002 · PC-CR-0014</div>
+          <h3>Papercuts</h3>
+          <p class="artist">Various Artists / Frēk Shō Presents</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge missing">Not Owned</span>
+      <span class="badge ">Not Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Confirmed acquisition target.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Known missing variant</dd></div>
+            <div><dt>Variant / relationship</dt><dd>CD edition</dd></div>
+            <div><dt>Chronology</dt><dd>Same release era</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / artist</div><h4>Gruf the Druid</h4><p>Core member; later Peanuts &amp; Corn connection</p></article><article class='relation'><div class='eyebrow'>Associated label / scene network</div><h4>Peanuts &amp; Corn</h4><p>Connected through Gruf, Fermented Reptile and Papercuts</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    </section>
+    
+    <section class="period" id="period-connected">
+      <div class="period-intro">
+        <div class="eyebrow">2003–2005</div>
+        <h2>Connected and member catalogues</h2>
+        <p>After the core chronology, the cluster continues through member solo releases, associated projects, and connected catalogues. These are not side notes; they show how the network continues beyond the group name.</p>
+      </div>
+      
+    <article class="release" id="PC-CR-0015">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2003 · PC-CR-0015</div>
+          <h3>The Dollar Bin Vol. 1</h3>
+          <p class="artist">Stepwriter</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge ">Not Scanned</span>
+      <span class="badge">Physical format to verify</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Owner confirms physical copy is held.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Connected physical catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Associated Frēk Shō catalogue</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0016">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2003 · PC-CR-0016</div>
+          <h3>I Ain&#x27;t Afraid of No Ghost</h3>
+          <p class="artist">Dead Can&#x27;t Bounce</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Already represented in master release ledger.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Connected physical catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Gallivanting Spoof-associated release</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0006</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / solo artist</div><h4>Micill / Shazzam the Vocal Shock Ill Kid</h4><p>Core member; later solo catalogue</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0017">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2004 · PC-CR-0017</div>
+          <h3>Micill Shazzam Write</h3>
+          <p class="artist">Micill Shazzam Write</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge ">Not Scanned</span>
+      <span class="badge">Physical format to verify</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Owner confirms physical copy is held.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Member solo catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Solo album</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>Not yet assigned</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / solo artist</div><h4>Micill / Shazzam the Vocal Shock Ill Kid</h4><p>Core member; later solo catalogue</p></article><article class='relation'><div class='eyebrow'>Label / imprint</div><h4>Vagrant Hobby Records and Promotions</h4><p>Issued key Frēk Shō-era physicals</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0018">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2004 · PC-CR-0018</div>
+          <h3>Just Stretching</h3>
+          <p class="artist">Ismaila</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Already represented in master ledger.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Member solo catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Solo release</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0019</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Ismaila Alfa / Mocean</h4><p>Joined through Twisted Spirits; Mocean remains Frēk Shō-branded</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0019">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2004 · PC-CR-0019</div>
+          <h3>Ishq De</h3>
+          <p class="artist">ishQ Bector</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Already represented in master ledger.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Member solo catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Solo release</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0018</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Member / artist</div><h4>Gruf the Druid</h4><p>Core member; later Peanuts &amp; Corn connection</p></article><article class='relation'><div class='eyebrow'>Member / solo artist</div><h4>Micill / Shazzam the Vocal Shock Ill Kid</h4><p>Core member; later solo catalogue</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Gumball / Reefill</h4><p>Core member with later Reefill catalogue</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0020">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2004 · PC-CR-0020</div>
+          <h3>Mark of the Zebra</h3>
+          <p class="artist">Ismaila</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">Vinyl</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>Vinyl labels and sleeve scans held.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Member solo catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>Vinyl edition</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0021</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Ismaila Alfa / Mocean</h4><p>Joined through Twisted Spirits; Mocean remains Frēk Shō-branded</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    <article class="release" id="PC-CR-0021">
+      <div class="release-head">
+        <div>
+          <div class="eyebrow">2005 · PC-CR-0021</div>
+          <h3>Mark of the Zebra</h3>
+          <p class="artist">Ismaila</p>
+        </div>
+        
+    <div class="badges">
+      <span class="badge owned">Owned</span>
+      <span class="badge scanned">Scanned</span>
+      <span class="badge">CD</span>
+    </div>
+      </div>
+
+      <div class="gallery-strip"><div class='empty-gallery'>No scan gallery is available yet. The record remains visible in context without a dead gallery shell.</div></div>
+
+      <div class="release-grid">
+        <section>
+          <h4>Object and release context</h4>
+          <p>CD edition held.</p>
+          <dl>
+            <div><dt>Role in cluster</dt><dd>Member solo catalogue</dd></div>
+            <div><dt>Variant / relationship</dt><dd>CD edition</dd></div>
+            <div><dt>Chronology</dt><dd>Not applicable</dd></div>
+            <div><dt>Archive record</dt><dd>PC-REL-0020</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h4>People, labels and connected work</h4>
+          <div class="relations"><article class='relation'><div class='eyebrow'>Member / producer / engineer</div><h4>Sunil</h4><p>Founding and central production role</p></article><article class='relation'><div class='eyebrow'>Member / solo identity</div><h4>Ismaila Alfa / Mocean</h4><p>Joined through Twisted Spirits; Mocean remains Frēk Shō-branded</p></article></div>
+        </section>
+      </div>
+
+      <section class="research-layer">
+        <h4>Research basis</h4>
+        
+            <details class="evidence-item">
+              <summary>PC-EVID-0002 · The Gallivanting Spoof — UGSMAG</summary>
+              <p><strong>Establishes:</strong> Early chronology, related catalogue and Mocean context</p>
+              <p><strong>Limitation:</strong> Published retrospective may simplify release distinctions</p>
+            </details>
+      </section>
+    </article>
+    
+    </section>
+    </main>
+</div>
+<script>
+document.querySelectorAll('.timeline-nav button').forEach(btn=>{
+ btn.addEventListener('click',()=>document.getElementById(btn.dataset.target).scrollIntoView({behavior:'smooth',block:'start'}))
+})
+</script>
+</body>
+</html>

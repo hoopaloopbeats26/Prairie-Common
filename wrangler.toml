@@ -1,0 +1,5 @@
+name = "prairie-common"
+compatibility_date = "2026-09-22"
+
+[assets]
+directory = "../site"
